@@ -2,30 +2,31 @@ import Wrapper from "./components/Wrapper";
 import Screen from "./components/Screen";
 import ButtonBox from "./components/ButtonBox";
 import Button from "./components/Button";
+import CalcProvider from "./context/CalcContext";
 
 const btnValues = [
   ["C", "+-", "%", "/"],
   [7, 8, 9, "x"],
   [4, 5, 6, "-"],
   [1, 2, 3, "+"],
-  [0, 1, 3],
+  [0, ".", "="],
 ];
 
 function App() {
   return (
-    <div>
+    <CalcProvider>
       <Wrapper>
         <Screen/>
        <ButtonBox>
         {btnValues.flat().map((btn, i) => (
           <Button 
-            values={btn}
+            value={btn}
             key={i}
           />
         ))}
        </ButtonBox>
       </Wrapper>
-    </div>
+    </CalcProvider>
   );
 }
 
