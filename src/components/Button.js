@@ -80,6 +80,15 @@ const Button = ({ value }) => {
         })
     }
 
+    // when user click the +- sign
+    const invertClick = () => {
+        setCalc({
+            number: calc.number ? calc.number * -1 : 0,
+            res: calc.res ? calc.res * -1 : 0,
+            sign: ''
+        })
+    }
+
     const buttonClick = () => {
         const results = {
             '.': commaClick,
@@ -89,7 +98,8 @@ const Button = ({ value }) => {
             '-': operationClick,
             '+': operationClick,
             '=': resultsClick,
-            '%': persenClick
+            '%': persenClick,
+            '+-': invertClick
         }
 
         if(results[value]) {
