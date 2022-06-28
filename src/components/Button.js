@@ -27,6 +27,7 @@ const Button = ({ value }) => {
     const reset = () => {
         setCalc({ sign: '', number: 0, res: 0})
     }
+    
     // user click number
     const handleClickButton = () => {
         const numberString = value.toString()
@@ -52,7 +53,7 @@ const Button = ({ value }) => {
         })
     }
     // when user click the equals sign
-    const resultsClick = () => {
+    const performOperation = () => {
         if(calc.res && calc.number) {
           const math = (a, b, sign) => {
             const result = {
@@ -97,7 +98,7 @@ const Button = ({ value }) => {
             'x': operationClick,
             '-': operationClick,
             '+': operationClick,
-            '=': resultsClick,
+            '=': performOperation,
             '%': persenClick,
             '+-': invertClick
         }
