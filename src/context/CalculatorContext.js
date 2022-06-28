@@ -1,4 +1,4 @@
-import { createContext, useState } from "react"
+import { createContext, useState, useEffect } from "react"
 
 export const CalcContext = createContext()
 const CalcProvider = ({ children }) => {
@@ -8,12 +8,12 @@ const CalcProvider = ({ children }) => {
         res: 0
     });
 
-    const providerValue = {
-        calc, setCalc
-    }
+    const providerValue = { calc, setCalc }
+    useEffect(() => {}, [calc])
 
     return (
         <CalcContext.Provider value={providerValue}>
+            
             { children }
         </CalcContext.Provider>
     )
