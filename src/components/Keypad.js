@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { CalcContext } from "../context/CalcContext"
+import { CalcContext } from "../context/CalculatorContext"
 
 const getStyleName = btn => {
     const className = {
@@ -13,7 +13,7 @@ const getStyleName = btn => {
     return className[btn]
 }
 
-const Button = ({ value }) => {
+const Keypad = ({ value }) => {
     const {calc, setCalc} = useContext(CalcContext);    
 
     // When user click the comma
@@ -71,8 +71,8 @@ const Button = ({ value }) => {
           })
         }
       }
-      // when user click persen
 
+      // when user click persen
     const persenClick = () => {
         setCalc({
             number: (calc.number / 100),
@@ -115,4 +115,4 @@ const Button = ({ value }) => {
     )
 }
 
-export default Button 
+export default Keypad 

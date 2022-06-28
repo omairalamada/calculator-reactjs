@@ -8,11 +8,12 @@ const CalcProvider = ({ children }) => {
         res: 0
     });
 
-    useEffect(() => {}, [calc])
     const providerValue = { calc, setCalc }
+    useEffect(() => {}, [calc])
 
     return (
         <CalcContext.Provider value={providerValue}>
+            
             { children }
         </CalcContext.Provider>
     )
