@@ -1,4 +1,4 @@
-import { useContext } from "react"
+import { useContext, useCallback } from "react"
 import { CalcContext } from "../context/CalculatorContext"
 
 const getStyleName = btn => {
@@ -53,7 +53,7 @@ const Keypad = ({ value }) => {
         })
     }
     // when user click the equals sign
-    const performOperation = () => {
+    const performOperation = useCallback(() => {
         if(calc.res && calc.number) {
           const math = (a, b, sign) => {
             const result = {
@@ -70,10 +70,10 @@ const Keypad = ({ value }) => {
             number: 0
           })
         }
-      }
+      }, [calc.number, calc.res, calc.sign, setCalc]);
 
       // when user click persen
-    const persenClick = () => {
+    const percentPressed = () => {
         setCalc({
             number: (calc.number / 100),
             res: (calc.res / 100),
@@ -82,7 +82,7 @@ const Keypad = ({ value }) => {
     }
 
     // when user click the +- sign
-    const invertClick = () => {
+    const invertPressed = () => {
         setCalc({
             number: calc.number ? calc.number * -1 : 0,
             res: calc.res ? calc.res * -1 : 0,
@@ -99,8 +99,8 @@ const Keypad = ({ value }) => {
             '-': operationClick,
             '+': operationClick,
             '=': performOperation,
-            '%': persenClick,
-            '+-': invertClick
+            '%': percentPressed,
+            '+-': invertPressed
         }
 
         if(results[value]) {
